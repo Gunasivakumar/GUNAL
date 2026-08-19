@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GR DESIGN — Creative Design Studio</title>
+<meta name="description" content="GR DESIGN — Logos, banners, posters, wedding albums, websites & more. Creative designs, fast delivery, affordable price.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0B0F;
+    --bg-alt:#111116;
+    --card:#15151C;
+    --card-hover:#1C1C24;
+    --text:#FFFFFF;
+    --text-secondary:#A1A1AA;
+    --text-muted:#6B6B76;
+    --lime:#B8FF3D;
+    --purple:#8B5CF6;
+    --border:rgba(255,255,255,0.08);
+    --border-strong:rgba(255,255,255,0.16);
+    --font-display:'Bricolage Grotesque', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    overflow-x:hidden;
+    line-height:1.5;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  ::selection{background:var(--lime);color:#0B0B0F;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--lime);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(11,11,15,0.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:0.01em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo span{color:var(--lime);}
+  .logo-img{
+    height:36px;
+    width:auto;
+    display:block;
+  }
+  .nav-links{display:flex;gap:36px;font-size:14.5px;color:var(--text-secondary);}
+  .nav-links a{transition:color .2s;position:relative;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 24px;
+    border-radius:100px;
+    font-size:14.5px;
+    font-weight:600;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, background .25s, color .25s, border-color .25s;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--lime);color:#0B0B0F;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(184,255,61,0.45);}
+  .btn-outline{border:1px solid var(--border-strong);color:var(--text);}
+  .btn-outline:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-2px);}
+  .btn-ghost{color:var(--text-secondary);}
+  .btn-ghost:hover{color:var(--text);}
+  .btn-wa{background:#15151C;border:1px solid var(--border-strong);}
+  .btn-wa:hover{border-color:var(--lime);}
+  .btn-sm{padding:9px 18px;font-size:13.5px;}
+
+  .menu-toggle{display:none;flex-direction:column;gap:5px;width:26px;}
+  .menu-toggle span{height:2px;background:var(--text);border-radius:2px;transition:.3s;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .menu-toggle{display:flex;}
+    .nav-cta .btn-outline{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-top:76px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:center;gap:22px;
+    transform:skewY(-6deg) scale(1.15);
+    opacity:0.85;
+    z-index:0;
+  }
+  .marquee-row{
+    display:flex;gap:22px;white-space:nowrap;
+    animation:scrollX 42s linear infinite;
+  }
+  .marquee-row.reverse{animation-direction:reverse;animation-duration:52s;}
+  .tile{
+    flex:0 0 auto;
+    width:190px;height:130px;
+    border-radius:16px;
+    display:flex;align-items:flex-end;
+    padding:14px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.75);
+    border:1px solid rgba(255,255,255,0.08);
+  }
+  .t1{background:linear-gradient(135deg,#1c1c26,#0e0e13);}
+  .t2{background:linear-gradient(135deg,#2c3a12,#0e0e13);}
+  .t3{background:linear-gradient(135deg,#241a38,#0e0e13);}
+  .t4{background:linear-gradient(135deg,#171717,#26261b);}
+  .t5{background:linear-gradient(135deg,#1a2c1a,#111);}
+  .t6{background:linear-gradient(135deg,#2a1e3d,#111);}
+  @keyframes scrollX{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  .hero-veil{
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 45%, rgba(11,11,15,0.55) 0%, rgba(11,11,15,0.88) 55%, #0B0B0F 100%);
+    z-index:1;
+  }
+
+  .hero-content{position:relative;z-index:2;}
+  .hero-title{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(46px, 9vw, 118px);
+    line-height:0.94;
+    letter-spacing:-0.02em;
+    text-align:center;
+  }
+  .hero-title .line{display:block;}
+  .hero-title .accent-word{
+    color:transparent;
+    -webkit-text-stroke:1.5px var(--lime);
+  }
+  .hero-title .slash{color:var(--text-muted); -webkit-text-stroke:0; font-weight:400; margin:0 6px;}
+  .hero-title .grad{
+    background:linear-gradient(96deg, var(--lime), var(--purple));
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:0;
+  }
+
+  .hero-sub{
+    max-width:560px;margin:28px auto 0;
+    text-align:center;
+    color:var(--text-secondary);
+    font-size:17px;
+  }
+  .hero-actions{
+    display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+    margin-top:38px;
+  }
+
+  .hero-scroll{
+    position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+    z-index:2;
+    font-family:var(--font-mono);font-size:11px;color:var(--text-muted);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    letter-spacing:0.1em;text-transform:uppercase;
+  }
+  .hero-scroll .line{width:1px;height:34px;background:linear-gradient(var(--lime),transparent);animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:120px 0;position:relative;}
+  @media (max-width:640px){section{padding:80px 0;}}
+  .sec-head{max-width:640px;margin-bottom:64px;}
+  .sec-head h2{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(30px,4.4vw,48px);
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  .sec-head p{color:var(--text-secondary);margin-top:16px;font-size:16px;max-width:520px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+  }
+  @media (max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--card);
+    padding:38px 30px;
+    min-height:220px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:background .3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .service-card:hover{background:var(--card-hover);}
+  .service-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--lime),var(--purple));
+    transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+  }
+  .service-card:hover::before{transform:scaleX(1);}
+  .service-num{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);}
+  .service-icon{font-size:30px;margin-bottom:auto;}
+  .service-card h3{font-family:var(--font-display);font-size:22px;font-weight:700;margin:18px 0 8px;}
+  .service-card p{color:var(--text-secondary);font-size:14px;margin-bottom:16px;}
+  .service-link{
+    font-size:13.5px;font-weight:600;color:var(--text);
+    display:inline-flex;align-items:center;gap:6px;
+    transition:gap .2s,color .2s;
+  }
+  .service-card:hover .service-link{gap:10px;color:var(--lime);}
+
+  /* ---------- WHY STRIP ---------- */
+  .why-strip{
+    display:grid;grid-template-columns:repeat(6,1fr);
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  }
+  @media (max-width:900px){.why-strip{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:560px){.why-strip{grid-template-columns:repeat(2,1fr);}}
+  .why-item{
+    padding:34px 20px;text-align:center;
+    border-right:1px solid var(--border);
+  }
+  .why-item:last-child{border-right:none;}
+  .why-item .ic{font-size:26px;margin-bottom:12px;}
+  .why-item h4{font-size:14px;font-weight:600;}
+  .why-item span{display:block;font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+  /* ---------- PORTFOLIO ---------- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+  .filter-btn{
+    padding:9px 20px;border-radius:100px;
+    border:1px solid var(--border-strong);
+    font-size:13.5px;color:var(--text-secondary);
+    transition:.2s;
+  }
+  .filter-btn.active,.filter-btn:hover{background:var(--lime);color:#0B0B0F;border-color:var(--lime);}
+  .portfolio-grid{
+    columns:3 260px;column-gap:18px;
+  }
+  @media (max-width:900px){.portfolio-grid{columns:2 220px;}}
+  @media (max-width:560px){.portfolio-grid{columns:1;}}
+  .p-item{
+    break-inside:avoid;margin-bottom:18px;
+    border-radius:16px;overflow:hidden;
+    border:1px solid var(--border);
+    position:relative;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .p-item:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+  .p-item .ph{
+    width:100%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+    color:rgba(255,255,255,0.55);
+    transition:transform .5s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .p-item .ph img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .p-item:hover .ph{transform:scale(1.06);}
+
+  /* front/back split view for visiting cards — both images visible at once */
+  .ph.split{
+    display:flex;
+  }
+  .ph.split img{
+    position:static;
+    width:50%;
+    height:100%;
+    object-fit:cover;
+    flex:1;
+  }
+  .ph.split::after{
+    content:'';
+    position:absolute;
+    top:0;bottom:0;left:50%;
+    width:1px;
+    background:rgba(255,255,255,0.25);
+    z-index:1;
+  }
+
+  .p-item .tag{
+    position:absolute;bottom:12px;left:12px;
+    background:rgba(11,11,15,0.7);backdrop-filter:blur(6px);
+    padding:6px 12px;border-radius:100px;
+    font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.06em;
+    opacity:0;transform:translateY(8px);transition:.25s;
+    z-index:2;
+  }
+  .p-item:hover .tag{opacity:1;transform:translateY(0);}
+  .p-item .expand-hint{
+    position:absolute;top:12px;right:12px;
+    width:32px;height:32px;border-radius:50%;
+    background:rgba(11,11,15,0.7);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;transform:translateY(-6px);transition:.25s;
+    z-index:2;
+  }
+  .p-item:hover .expand-hint{opacity:1;transform:translateY(0);}
+  .p-item .expand-hint svg{width:14px;height:14px;stroke:var(--lime);}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:1000;
+    display:none;
+    align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-backdrop{
+    position:absolute;inset:0;
+    background:rgba(8,8,11,0.86);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  }
+  .lightbox-panel{
+    position:relative;z-index:1;
+    width:100%;max-width:760px;
+    max-height:88vh;overflow-y:auto;
+    background:var(--card);
+    border:1px solid var(--border-strong);
+    border-radius:20px;
+    opacity:0;transform:translateY(24px) scale(0.98);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .lightbox.open .lightbox-panel{opacity:1;transform:translateY(0) scale(1);}
+  .lightbox-close{
+    position:absolute;top:16px;right:16px;z-index:2;
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(11,11,15,0.6);border:1px solid var(--border-strong);
+    display:flex;align-items:center;justify-content:center;
+    transition:.2s;
+  }
+  .lightbox-close:hover{border-color:var(--lime);}
+  .lightbox-close svg{width:16px;height:16px;stroke:var(--text);}
+  .lightbox-media{
+    width:100%;min-height:280px;max-height:52vh;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:20px 20px 0 0;
+    font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+    color:rgba(255,255,255,0.6);
+    overflow:hidden;
+  }
+  .lightbox-media.split-media{
+    display:flex;
+  }
+  .lightbox-media.split-media img{
+    width:50%;height:100%;object-fit:cover;
+  }
+  .lightbox-body{padding:28px 30px 32px;}
+  .lightbox-body .eyebrow{margin-bottom:10px;}
+  .lightbox-body h3{
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(22px,3vw,30px);letter-spacing:-0.01em;margin-bottom:10px;
+  }
+  .lightbox-body p{color:var(--text-secondary);font-size:15px;margin-bottom:22px;}
+  .lightbox-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .lightbox-nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:0 30px 24px;gap:12px;
+  }
+  .lightbox-nav-btn{
+    display:flex;align-items:center;gap:8px;
+    padding:9px 16px;border-radius:100px;
+    border:1px solid var(--border-strong);
+    font-size:13px;color:var(--text-secondary);
+    transition:.2s;
+  }
+  .lightbox-nav-btn:hover{border-color:var(--lime);color:var(--lime);}
+  .lightbox-count{font-family:var(--font-mono);font-size:12px;color:var(--text-muted);}
+  @media (max-width:640px){
+    .lightbox{padding:0;}
+    .lightbox-panel{max-height:100vh;height:100%;border-radius:0;max-width:none;}
+    .lightbox-media{border-radius:0;}
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  @media (max-width:800px){.process-grid{grid-template-columns:1fr;}}
+  .process-item{padding:32px 0;border-top:1px solid var(--border);}
+  .process-num{font-family:var(--font-display);font-size:44px;font-weight:800;color:transparent;-webkit-text-stroke:1.3px var(--border-strong);}
+  .process-item h3{font-family:var(--font-display);font-size:21px;margin:14px 0 8px;}
+  .process-item p{color:var(--text-secondary);font-size:14.5px;}
+
+  /* ---------- PRICING ---------- */
+  .price-lead{
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(26px,3.4vw,38px);text-align:center;margin-bottom:56px;
+  }
+  .price-lead .num{color:var(--lime);}
+  .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media (max-width:900px){.pricing-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.pricing-grid{grid-template-columns:1fr;}}
+  .price-card{
+    background:var(--card);border:1px solid var(--border);border-radius:18px;
+    padding:28px 24px;transition:.25s;
+  }
+  .price-card:hover{border-color:var(--border-strong);transform:translateY(-4px);}
+  .price-card h4{font-family:var(--font-display);font-size:18px;margin-bottom:6px;}
+  .price-card .from{font-size:13px;color:var(--text-muted);margin-bottom:18px;}
+  .price-card .from b{color:var(--lime);font-family:var(--font-mono);}
+
+  /* ---------- EDITING BAND ---------- */
+  .edit-band{
+    background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  }
+  .edit-inner{
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
+  }
+  .edit-inner h2{font-family:var(--font-display);font-size:clamp(26px,3.6vw,38px);max-width:560px;line-height:1.15;}
+  .edit-inner p{color:var(--text-secondary);max-width:460px;margin-top:14px;font-size:15px;}
+  .edit-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .edit-tags span{
+    font-family:var(--font-mono);font-size:11.5px;color:var(--text-secondary);
+    border:1px solid var(--border-strong);border-radius:100px;padding:6px 12px;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-section{text-align:center;}
+  .cta-section h2{
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(32px,6vw,64px);line-height:1.05;letter-spacing:-0.01em;
+  }
+  .cta-section .grad{background:linear-gradient(96deg,var(--lime),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cta-section p{color:var(--text-secondary);margin:20px 0 36px;font-size:16px;}
+  .cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--border);padding:64px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:56px;}
+  .footer-brand .logo{margin-bottom:14px;}
+  .footer-brand p{color:var(--text-muted);font-size:13.5px;max-width:260px;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h5{font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col a{color:var(--text-secondary);font-size:14.5px;transition:.2s;}
+  .footer-col a:hover{color:var(--lime);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    padding-top:28px;border-top:1px solid var(--border);
+    font-size:12.5px;color:var(--text-muted);
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .wa-float{
+    position:fixed;bottom:26px;right:26px;z-index:90;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--lime);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px -6px rgba(184,255,61,0.55);
+    animation:float 3s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+  .wa-float svg{width:28px;height:28px;}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="logo"><img src="GRDESIGNS.png" alt="GR DESIGNS logo" class="logo-img" onerror="this.style.display='none'">GR <span>DESIGNS</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline btn-sm">Get a Design</a>
+      <a href="https://wa.me/918072099847" target="_blank" rel="noopener" class="btn btn-primary btn-sm">WhatsApp Us</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="marquee-row">
+      <div class="tile t1">Logo</div><div class="tile t2">Banner</div><div class="tile t3">Poster</div>
+      <div class="tile t4">Wedding</div><div class="tile t5">Pamphlet</div><div class="tile t6">Website</div>
+      <div class="tile t1">Logo</div><div class="tile t2">Banner</div><div class="tile t3">Poster</div>
+      <div class="tile t4">Wedding</div><div class="tile t5">Pamphlet</div><div class="tile t6">Website</div>
+    </div>
+    <div class="marquee-row reverse">
+      <div class="tile t3">Social</div><div class="tile t5">Invite</div><div class="tile t1">Edit</div>
+      <div class="tile t6">Flyer</div><div class="tile t2">Album</div><div class="tile t4">Poster</div>
+      <div class="tile t3">Social</div><div class="tile t5">Invite</div><div class="tile t1">Edit</div>
+      <div class="tile t6">Flyer</div><div class="tile t2">Album</div><div class="tile t4">Poster</div>
+    </div>
+    <div class="marquee-row">
+      <div class="tile t2">Banner</div><div class="tile t6">Website</div><div class="tile t4">Wedding</div>
+      <div class="tile t1">Logo</div><div class="tile t3">Poster</div><div class="tile t5">Pamphlet</div>
+      <div class="tile t2">Banner</div><div class="tile t6">Website</div><div class="tile t4">Wedding</div>
+      <div class="tile t1">Logo</div><div class="tile t3">Poster</div><div class="tile t5">Pamphlet</div>
+    </div>
+  </div>
+  <div class="hero-veil"></div>
+
+  <div class="hero-content wrap">
+    <h1 class="hero-title">
+      <span class="line"><span class="accent-word">DESIGN</span> <span class="slash">/</span></span>
+      <span class="line"><span class="grad">CREATE</span> <span class="slash">/</span></span>
+      <span class="line">DELIVER</span>
+    </h1>
+    <p class="hero-sub">Professional graphic &amp; digital designs — logos, banners, posters, wedding albums and full websites — crafted fast and priced fairly.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn btn-outline">View Our Designs</a>
+      <a href="#contact" class="btn btn-primary">Get a Design</a>
+      <a href="https://wa.me/918072099847" target="_blank" rel="noopener" class="btn btn-wa">WhatsApp Us →</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we make</span>
+      <h2>One studio, every design your brand needs.</h2>
+      <p>From a single logo to a full wedding album, each project gets the same close attention and quick turnaround.</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <div class="service-icon">🎨</div>
+        <h3>Logo Design</h3>
+        <p>A distinct mark built to work everywhere — print, screen, and social.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <div class="service-icon">🖼️</div>
+        <h3>VisitingCard Design</h3>
+        <p>Creating professional and attractive visiting card designs that reflect your brand identity.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <div class="service-icon">🖼️</div>
+        <h3>Banner Design</h3>
+        <p>Storefront, event, and web banners that stop the scroll.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <div class="service-icon">📌</div>
+        <h3>Poster Design</h3>
+        <p>Bold layouts for launches, promos, and events.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">05</span>
+        <div class="service-icon">📄</div>
+        <h3>Pamphlet / Flyer</h3>
+        <p>Clear, persuasive print pieces that get read, not binned.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">06</span>
+        <div class="service-icon">💍</div>
+        <h3>Wedding Album</h3>
+        <p>Story-driven album layouts, from raw shots to final pages.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">07</span>
+        <div class="service-icon">💻</div>
+        <h3>Website Design</h3>
+        <p>Fast, modern sites that actually represent your brand.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">08</span>
+        <div class="service-icon">📱</div>
+        <h3>Social Media Design</h3>
+        <p>Post templates and creatives sized for every platform.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">09</span>
+        <div class="service-icon">🖥️</div>
+        <h3>Photo &amp; Video Editing</h3>
+        <p>Retouching, colour grading, and quick-turn video edits.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+      <div class="service-card">
+        <span class="service-num">10</span>
+        <div class="service-icon">💌</div>
+        <h3>Invitations &amp; Events</h3>
+        <p>Digital and print invites for weddings, parties, and launches.</p>
+        <a href="#contact" class="service-link">View Service →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="why-strip reveal">
+  <div class="why-item"><div class="ic">⚡</div><h4>Fast Delivery</h4><span>Quick turnaround</span></div>
+  <div class="why-item"><div class="ic">💰</div><h4>Affordable</h4><span>Fair pricing</span></div>
+  <div class="why-item"><div class="ic">🎨</div><h4>Creative</h4><span>Modern designs</span></div>
+  <div class="why-item"><div class="ic">✏️</div><h4>Editing</h4><span>Fixes available</span></div>
+  <div class="why-item"><div class="ic">📱</div><h4>Social Ready</h4><span>Every platform</span></div>
+  <div class="why-item"><div class="ic">🤝</div><h4>Friendly</h4><span>Easy to work with</span></div>
+</div>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Selected work</span>
+      <h2>A look at what we've built.</h2>
+      <p>A sample of recent projects across categories — swap in your real work anytime.</p>
+    </div>
+
+    <div class="filters reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="logo">Logo</button>
+      <button class="filter-btn" data-filter="VisitingCard">visiting card</button>
+      <button class="filter-btn" data-filter="poster">Poster</button>
+      <button class="filter-btn" data-filter="banner">Banner</button>
+      <button class="filter-btn" data-filter="wedding">Wedding</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+    </div>
+
+
+    <div class="portfolio-grid reveal" id="portfolioGrid">
+      <div class="p-item" data-cat="LOGO" data-title="Logo 01" data-desc="Bold, high-contrast layout built for a product launch — designed to grab attention fast." tabindex="0" role="button" aria-label="View Poster 01"><div class="ph t3" style="width:auto;height:300px;"><img src="Mascote Logo1 copy.jpg" alt="Logo 01" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">logo</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+
+     <div class="p-item" data-cat="VisitingCard" data-title="Visiting Card 01" data-desc="Bold, high-contrast layout built for a product launch — designed to grab attention fast." tabindex="0" role="button" aria-label="View VisitingCard 01">
+        <div class="ph t3 split" style="width:auto;height:200px;">
+          <img src="food card 2.1 copy.jpg" alt="Visiting Card 01 Front" loading="lazy" onerror="this.style.display='none'">
+          <img src="food card 2.2 copy.jpg" alt="Visiting Card 01 Back" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <span class="tag">VisitingCard</span>
+        <span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="p-item" data-cat="poster" data-title="Poster 01" data-desc="Bold, high-contrast layout built for a product launch — designed to grab attention fast." tabindex="0" role="button" aria-label="View Poster 01"><div class="ph t3" style="width:auto;height:300px;"><img src="insitute copy.jpg" alt="Poster 01" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Poster</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="banner" data-title="Banner 01" data-desc="A scroll-stopping web banner sized and optimised for storefront and event promotion." tabindex="0" role="button" aria-label="View Banner 01"><div class="ph t2" style="width:auto;height:500px;"><img src="M1 copy.jpg" alt="Banner 01" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Banner</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="wedding" data-title="Wedding 01" data-desc="Story-driven album spread taking raw photos through to a polished, print-ready page." tabindex="0" role="button" aria-label="View Wedding 01"><div class="ph t4" style="width:auto;height:350px;"><img src="Wedding1.jpg" alt="Wedding 01" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Wedding</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="web" data-title="Web 01" data-desc="A fast, modern website design built to represent the brand across every device." tabindex="0" role="button" aria-label="View Web 01"><div class="ph t6" style="width:auto;height:240px;"><img src="web1.jpg" alt="Web 01" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Web</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="logo" data-title="Logo 02" data-desc="A minimal wordmark with a flexible icon, built to scale from favicon to signage." tabindex="0" role="button" aria-label="View Logo 02"><div class="ph t5" style="width:auto;height:180px;"><img src="tea logo copy.jpg" alt="Logo 02" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Logo</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+
+      <div class="p-item" data-cat="VisitingCard" data-title="Visiting Card 02" data-desc="Bold, high-contrast layout built for a product launch — designed to grab attention fast." tabindex="0" role="button" aria-label="View VisitingCard 02">
+        <div class="ph t3 split" style="width:auto;height:200px;">
+          <img src="A1 juice1 copy.jpg" alt="Visiting Card 02 Front" loading="lazy" onerror="this.style.display='none'">
+          <img src="A1 juice2 copy.jpg" alt="Visiting Card 02 Back" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <span class="tag">VisitingCard</span>
+        <span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+      </div>
+
+      <div class="p-item" data-cat="poster" data-title="Poster 02" data-desc="Event poster with a clear hierarchy — headline, date, and call to action at a glance." tabindex="0" role="button" aria-label="View Poster 02"><div class="ph t1" style="width:auto;height:280px;"><img src="FOOD.png" alt="Poster 02" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Poster</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="banner" data-title="Banner 02" data-desc="Social-ready promo banner, resized and exported for every major ad placement." tabindex="0" role="button" aria-label="View Banner 02"><div class="ph t3" style="width:auto;height:500px;"><img src="MUSIC1 copy.jpg" alt="Banner 02" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Banner</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="web" data-title="Web 02" data-desc="Landing page design focused on a single clear conversion goal." tabindex="0" role="button" aria-label="View Web 02"><div class="ph t2" style="width:auto;height:280px;"><img src="web2.jpg" alt="Web 02" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Web</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="wedding" data-title="Wedding 02" data-desc="Full album layout balancing candid shots with formal portraits across every page." tabindex="0" role="button" aria-label="View Wedding 02"><div class="ph t6" style="width:auto;height:220px;"><img src="Wedding2.jpg" alt="Wedding 02" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Wedding</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="logo" data-title="Logo 03" data-desc="Playful, colour-driven mark designed for a youth-focused consumer brand." tabindex="0" role="button" aria-label="View Logo 03"><div class="ph t4" style="height:160px;"><img src="Halthcare.png" alt="Logo 03" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Logo</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+      <div class="p-item" data-cat="poster" data-title="Poster 03" data-desc="Minimal typographic poster built entirely around a single strong headline." tabindex="0" role="button" aria-label="View Poster 03"><div class="ph t5" style="height:300px;"><img src="japanesfinel.png" alt="Poster 03" loading="lazy" onerror="this.style.display='none'"></div><span class="tag">Poster</span><span class="expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+  <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+  <div class="lightbox-panel">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="lightbox-media" id="lightboxMedia"></div>
+    <div class="lightbox-body">
+      <span class="eyebrow" id="lightboxCat">Category</span>
+      <h3 id="lightboxTitle">Title</h3>
+      <p id="lightboxDesc">Description</p>
+      <div class="lightbox-actions">
+        <a href="#contact" class="btn btn-primary" id="lightboxCta">Get a Design Like This</a>
+        <a href="https://wa.me/918072099847" target="_blank" rel="noopener" class="btn btn-outline">Ask on WhatsApp</a>
+      </div>
+    </div>
+    <div class="lightbox-nav">
+      <button class="lightbox-nav-btn" id="lightboxPrev">← Prev</button>
+      <span class="lightbox-count" id="lightboxCount">1 / 12</span>
+      <button class="lightbox-nav-btn" id="lightboxNext">Next →</button>
+    </div>
+  </div>
+</div>
+
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>From idea to final file in three steps.</h2>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <h3>Tell Us</h3>
+        <p>Send your requirements — what it's for, sizes, and any references you like.</p>
+      </div>
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <h3>We Design</h3>
+        <p>Our designer builds your concept and shares a draft for review.</p>
+      </div>
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <h3>Get Your Design</h3>
+        <p>Review, request edits, and receive the final print- or web-ready files.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="price-lead">Affordable designs starting from <span class="num">₹299</span><sup style="font-size:14px;color:var(--text-muted);">*</sup></p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="price-card"><h4>Logo Design</h4><p class="from">Starting from <b>₹3999</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+      <div class="price-card"><h4>visiting card</h4><p class="from">Starting from <b>₹1499</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+      <div class="price-card"><h4>Poster / Banner</h4><p class="from">Starting from <b>₹299</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+      <div class="price-card"><h4>Pamphlet / Flyer</h4><p class="from">Starting from <b>399</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+      <div class="price-card"><h4>Wedding Album</h4><p class="from">Starting from <b>₹999</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+      <div class="price-card"><h4>Website Design</h4><p class="from">Starting from <b>₹9,999</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+      <div class="price-card"><h4>Photo / Video Edit</h4><p class="from">Starting from <b>₹299</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+      <div class="price-card"><h4>Invitation Design</h4><p class="from">Starting from <b>₹500</b></p><a href="#contact" class="btn btn-outline btn-sm">Get Quote</a></div>
+    </div>
+    <p style="text-align:center;color:var(--text-muted);font-size:12.5px;margin-top:24px;">*Final price depends on complexity and revisions. Get an exact quote via WhatsApp.</p>
+  </div>
+</section>
+
+<div class="edit-band">
+  <div class="wrap edit-inner reveal">
+    <div>
+      <span class="eyebrow">Editing service</span>
+      <h2>Already have a design? Need changes?</h2>
+      <p>No problem — GR DESIGNS also handles corrections, resizing, background removal, colour changes, and other edits to existing files.</p>
+      <div class="edit-tags">
+        <span>Resizing</span><span>Background Removal</span><span>Colour Changes</span><span>Text Edits</span><span>File Format Conversion</span>
+      </div>
+    </div>
+    <a href="#contact" class="btn btn-primary">Send a File to Edit</a>
+  </div>
+</div>
+
+<section id="contact" class="cta-section">
+  <div class="wrap">
+    <h2 class="reveal">Have an idea?<br>Let's turn it into a <span class="grad">design.</span></h2>
+    <p class="reveal">Send your requirement today and get a quick quote — no long forms, just a message.</p>
+    <div class="cta-actions reveal">
+      <a href="https://wa.me/918072099847" target="_blank" rel="noopener" class="btn btn-primary">Start Your Project</a>
+      <a href="mailto:grdesign8072@gmail.com" target="_blank" class="btn btn-outline">Email Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo"><img src="GRDESIGNS.png" alt="GR DESIGNS logo" class="logo-img" onerror="this.style.display='none'">GR <span>DESIGNS</span></a>
+        <p>Creative designs for logos, print, and web — designed fast, priced fairly.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="https://wa.me/918072099847" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:grdesign8072@gmail.com" target="_blank" class="btn btn-outline">Email</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Social</h5>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> GR DESIGNS. All rights reserved.</span>
+      <span>Design / Create / Deliver</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/918072099847" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#0B0B0F"><path d="M16.001 3C9.1 3 3.5 8.6 3.5 15.5c0 2.3.6 4.5 1.8 6.4L3 29l7.3-2.2c1.8 1 3.9 1.5 5.7 1.5 6.9 0 12.5-5.6 12.5-12.5S22.9 3 16.001 3zm0 22.7c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.3 1.3 1.3-4.2-.2-.4c-1-1.6-1.5-3.5-1.5-5.4 0-5.7 4.6-10.3 10.3-10.3s10.3 4.6 10.3 10.3-4.5 10.3-10.2 10.3zm5.6-7.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+  // mobile menu (simple toggle: shows nav links inline)
+  const toggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  toggle && toggle.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.cssText += open ? '' : 'position:fixed;top:76px;left:0;right:0;background:#0B0B0F;flex-direction:column;padding:24px 20px;border-top:1px solid rgba(255,255,255,0.08);gap:20px;';
+  });
+
+  // portfolio filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.p-item');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(item => {
+        item.style.display = (f === 'all' || item.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+
+  // ---------- LIGHTBOX (individual design view) ----------
+  const lightbox = document.getElementById('lightbox');
+  const lightboxMedia = document.getElementById('lightboxMedia');
+  const lightboxCat = document.getElementById('lightboxCat');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc = document.getElementById('lightboxDesc');
+  const lightboxCount = document.getElementById('lightboxCount');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+
+  const allItems = Array.from(items); // fixed full list, independent of active filter
+  let currentIndex = 0;
+
+  function visibleIndices(){
+    // only navigate among items currently shown by the active filter
+    return allItems.map((el, i) => el.style.display !== 'none' ? i : null).filter(i => i !== null);
+  }
+
+  function openLightboxAt(index){
+    currentIndex = index;
+    const el = allItems[index];
+    const ph = el.querySelector('.ph');
+    const imgs = Array.from(ph.querySelectorAll('img')).filter(im => im.style.display !== 'none' && im.getAttribute('src'));
+    const cat = el.dataset.cat;
+    const catLabel = cat.charAt(0).toUpperCase() + cat.slice(1);
+
+    const baseClass = 'lightbox-media ' + (ph.className.match(/t\d/) || [''])[0];
+
+    if (imgs.length > 1){
+      // front + back card: show both side by side
+      lightboxMedia.className = baseClass + ' split-media';
+      lightboxMedia.innerHTML = '';
+      imgs.forEach(srcImg => {
+        const bigImg = document.createElement('img');
+        bigImg.src = srcImg.getAttribute('src');
+        bigImg.alt = srcImg.getAttribute('alt') || '';
+        bigImg.onerror = function(){ this.style.display = 'none'; };
+        lightboxMedia.appendChild(bigImg);
+      });
+    } else if (imgs.length === 1){
+      lightboxMedia.className = baseClass;
+      lightboxMedia.innerHTML = '';
+      const bigImg = document.createElement('img');
+      bigImg.src = imgs[0].getAttribute('src');
+      bigImg.alt = el.dataset.title || '';
+      bigImg.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:20px 20px 0 0;';
+      bigImg.onerror = function(){ lightboxMedia.innerHTML = ''; lightboxMedia.textContent = el.dataset.title || ''; };
+      lightboxMedia.appendChild(bigImg);
+    } else {
+      lightboxMedia.className = baseClass;
+      lightboxMedia.innerHTML = '';
+      lightboxMedia.textContent = el.dataset.title || '';
+    }
+
+    lightboxCat.textContent = catLabel + ' design';
+    lightboxTitle.textContent = el.dataset.title || '';
+    lightboxDesc.textContent = el.dataset.desc || '';
+
+    const vis = visibleIndices();
+    const pos = vis.indexOf(index);
+    lightboxCount.textContent = (pos + 1) + ' / ' + vis.length;
+
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function stepLightbox(dir){
+    const vis = visibleIndices();
+    if (!vis.length) return;
+    let pos = vis.indexOf(currentIndex);
+    pos = (pos + dir + vis.length) % vis.length;
+    openLightboxAt(vis[pos]);
+  }
+
+  allItems.forEach((el, i) => {
+    el.addEventListener('click', () => openLightboxAt(i));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightboxAt(i); }
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxBackdrop.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', () => stepLightbox(-1));
+  lightboxNext.addEventListener('click', () => stepLightbox(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') stepLightbox(-1);
+    if (e.key === 'ArrowRight') stepLightbox(1);
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
